@@ -4,7 +4,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 
 import authRoutes from "./routes/authRoutes.js";
-// import postRoutes from "./routes/postRoutes.js";
+import postRoutes from "./routes/postRoutes.js";
+// import commentRoutes from "./routes/commentRoutes.js";
 
 dotenv.config({ path: './.env.local' });
 
@@ -14,7 +15,9 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/auth", authRoutes);
-// app.use("/post", postRoutes);
+app.use("/post", postRoutes);
+// write routes for comment
+// app.use("/comment", commentRoutes);
 
 // MONGOOSE (DATABASE connection) SETUP 
 const PORT = process.env.PORT || 6001;

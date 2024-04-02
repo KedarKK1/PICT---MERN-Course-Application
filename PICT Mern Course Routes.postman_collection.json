@@ -77,6 +77,171 @@
 			]
 		},
 		{
+			"name": "Post Routes",
+			"item": [
+				{
+					"name": "addPost",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjYwYmZhNjljNzBmMDIxNjE4OGZhMzNjIn0sImlhdCI6MTcxMjA2MTU2Nn0.Or7nQUY1kt2S4MnyrRYPRHTOpnhHYojXvnpgL3CzVOA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"welcome to LNS with Kapil \",\r\n    \"content\": \"This is kapils latenight show summary\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/post/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"post",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edidPost",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjYwYmZhNjljNzBmMDIxNjE4OGZhMzNjIn0sImlhdCI6MTcxMjA2MTU2Nn0.Or7nQUY1kt2S4MnyrRYPRHTOpnhHYojXvnpgL3CzVOA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"660c055fba3fa848d770ac5b\",\r\n    \"title\": \"welcome to new Wildlife century \",\r\n    \"content\": \"This is kanchenchunga wildlife century\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/post/edit",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"post",
+								"edit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "removePost",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjYwYmZhNjljNzBmMDIxNjE4OGZhMzNjIn0sImlhdCI6MTcxMjA2MTU2Nn0.Or7nQUY1kt2S4MnyrRYPRHTOpnhHYojXvnpgL3CzVOA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"660c055fba3fa848d770ac5b\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/post/remove",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"post",
+								"remove"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllPost",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjYwYmZhNjljNzBmMDIxNjE4OGZhMzNjIn0sImlhdCI6MTcxMjA2MTU2Nn0.Or7nQUY1kt2S4MnyrRYPRHTOpnhHYojXvnpgL3CzVOA",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3001/post/getAll",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"post",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get A Post",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjYwYmZhNjljNzBmMDIxNjE4OGZhMzNjIn0sImlhdCI6MTcxMjA2MTU2Nn0.Or7nQUY1kt2S4MnyrRYPRHTOpnhHYojXvnpgL3CzVOA",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3001/post/get/660c055fba3fa848d770ac5b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"post",
+								"get",
+								"660c055fba3fa848d770ac5b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "getUserDetails",
 			"request": {
 				"method": "GET",
