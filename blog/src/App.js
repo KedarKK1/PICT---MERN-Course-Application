@@ -7,7 +7,6 @@ import {
 import Navbar from './components/Navbar';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
-import Blog from './components/Blog';
 
 function App() {
   return (
