@@ -1,20 +1,27 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
-const Blog = () => {
+const Blog = (props) => {
+
+    const { post } = props;
+
     return (
-        <div>
-            <div classNames="card" style={{ width: "18rem", margin:"20px" }}>
-                <div className='mb-4 shadow'>
-                    <div className="card-header bg-primary d-flex justify-content-between align-items-center">
-                        <h5 classNames="card-title mb-1" style={{padding:"10px"}}>Card title</h5>
-                    </div>
-                    <div classNames="card-body" >
-                        <p style={{padding:"10px"}} classNames="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
+        <Link className="text-decoration-none" to={`/post/${post._id}`}>
+            <div className="card mb-4 shadow">
+                <div className="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                    <h4 className="mb-0">{post.title}</h4>
+                    {/* <div>
+                        <button className="btn btn-sm btn-danger me-2" onClick={() => { handleDeletePost(post._id) }}>Delete</button>
+                        <button className="btn btn-sm btn-warning">Update</button>
+                    </div> */}
+                </div>
+                <div className="card-body">
+                    <p className="card-text" dangerouslySetInnerHTML={{ __html: post.content }}></p>
                 </div>
             </div>
-        </div>
-    )
+        </Link>
+    );
+
 }
 
 export default Blog

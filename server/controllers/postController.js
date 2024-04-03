@@ -8,7 +8,6 @@ export const addPost = async (req, res) => {
         if (!title || !content) {
             return res.status(400).json({ success: false, message: "title/content is not given in req.body!" });
         }
-
         let post = new Post({ title, content, author: req.user.id });
         const savedPost = post.save();
         res.status(201).json({ success: true, post });

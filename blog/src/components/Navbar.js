@@ -1,26 +1,32 @@
-import React from 'react'
+import React from 'react';
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+    const navigate = useNavigate();
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('userId');
+        navigate('/login', { replace: true });
+    }
     return (
-        <div>
-            <nav className="navbar navbar-expand-lg bg-body-tertiary">
-                <div className="container-fluid">
-                    <a className="navbar-brand" href="#">Navbar</a>
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <form className="d-flex" role="search">
-                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                            <button className="btn btn-sm btn-outline-success" type="submit">Search</button>
-
-                            {/* Adjust the buttons according to user login status */}
-                            <button className="btn btn-sm btn-outline-success" type="submit">Login</button>
-                            <button className="btn btn-sm btn-outline-success" type="submit">SignUp</button>
-
-                            <button className="btn btn-sm btn-outline-success" type="submit">Logout</button>
-                        </form>
-                    </div>
-                </div>
-            </nav>
-        </div>
+        <nav className="navbar bg-body-tertiary" style={{ marginBottom: "10px" }}>
+            <div className="container-fluid">
+                <Link className="navbar-brand" style={{ fontWeight: "bold", fontSize: "clamp(1rem, 2rem, 2.25rem)" }}>Navbar</Link>
+                <form className="d-flex" role="search">
+                    {!localStorage.getItem('token') ?
+                        <div className="d-flex">
+                            <Link className="btn btn-outline-dark mx-2" to="/login" role="button">Login</Link>
+                            <Link className="btn btn-outline-dark mx-2" to="/signup" role="button">Sign Up</Link>
+                        </div>
+                        :
+                        <div className="d-flex">
+                            <Link className="btn btn-outline-dark mx-2" to="/add" role="button">Add Post</Link>
+                            <button className="btn btn-outline-dark mx-2" onClick={handleLogout}>Logout</button>
+                        </div>
+                    }
+                </form>
+            </div>
+        </nav>
     )
 }
 
