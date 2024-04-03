@@ -8,7 +8,10 @@ import Navbar from './components/Navbar';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import HomePage from './pages/HomePage';
+<<<<<<< HEAD
 import AddPostPage from "./pages/AddPostPage";
+=======
+>>>>>>> 71b4653683b97af37cc437af21849e2425a588d7
 
 function App() {
   return (
