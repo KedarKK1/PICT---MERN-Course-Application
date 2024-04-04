@@ -8,8 +8,15 @@ export const addComment = async (req, res) => {
         if (!postId || !content) {
             return res.status(400).json({ success: false, message: "postId/content is not given in req.body!" });
         }
+        let post = await Post.findById(postId);
+        if(!post){
+            throw new Error("No such post exists with given postId!");
+        }
         let comment = new Comment({ post: postId, content, author: req.user.id });
         const savedComment = comment.save();
+        let postCommentCount = post.commentCount;
+        post.commentCount = postCommentCount + 1;
+        let savedPost = await post.save();
         res.status(201).json({ success: true, comment: comment });
 
     } catch (err) {
@@ -48,6 +55,16 @@ export const removeAComment = async (req, res) => {
             if(comment.author != req.user.id){
                 return res.status(403).json({ success: false, message: "Unauthorized!" });
             }else{
+                let post = await Post.findById(comment.post);
+
+                if(!post){
+                    throw new Error("No such post exists with given comment.post!");
+                }
+                let postCommentCount = post.commentCount;
+                post.commentCount = Math.max(postCommentCount - 1, 0);
+                let savedPost = await post.save();
+
+
                 const removed = await Comment.deleteOne({ _id: comment._id });
                 return res.status(200).json({ success: true, message: removed });
             }

@@ -23,11 +23,13 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
 
-        <Route path="/add" element={<AddPostPage />} />
 
         <Route element={<RequiredAuth /> }>
+          <Route path="/add" element={<AddPostPage />} />
           <Route path="/post/:postId" element={<PostPage />} />
           <Route path="/edit-post/:postId" element={<EditPostPage />} />
+
+          
         </Route>
 
 

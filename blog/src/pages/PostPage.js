@@ -47,7 +47,6 @@ const PostPage = () => {
             body: body
         });
         const json = await respose.json();
-        console.log("json ", json);
         if (json.success == true) {
             navigate('/', { replace: true });
         } else {
