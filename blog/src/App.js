@@ -5,13 +5,14 @@ import {
   Route
 } from "react-router-dom";
 import Navbar from './components/Navbar';
+import RequiredAuth from './components/RequiredAuth.js';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import HomePage from './pages/HomePage';
-<<<<<<< HEAD
 import AddPostPage from "./pages/AddPostPage";
-=======
->>>>>>> 71b4653683b97af37cc437af21849e2425a588d7
+import EditPostPage from "./pages/EditPostPage.js";
+import PostPage from "./pages/PostPage.js";
+
 
 function App() {
   return (
@@ -23,6 +24,12 @@ function App() {
         <Route path="/signup" element={<SignupPage />} />
 
         <Route path="/add" element={<AddPostPage />} />
+
+        <Route element={<RequiredAuth /> }>
+          <Route path="/post/:postId" element={<PostPage />} />
+          <Route path="/edit-post/:postId" element={<EditPostPage />} />
+        </Route>
+
 
       </Routes>
     </Router>

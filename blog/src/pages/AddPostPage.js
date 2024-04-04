@@ -26,7 +26,7 @@ const AddPostPage = () => {
             let bodyData = JSON.stringify({ "title": title, "content": content });
             const response = await fetch("http://localhost:3001/post/add", {
                 method: "POST",
-                body: (bodyData), // here was the mistake, i made THE MISTAKE WAS JSON.stringify(bodyData) where bodyData was already stringified, two i was stringifying the bodyData it twice!
+                body: bodyData, 
                 headers: { "Content-Type": "application/json", "auth-token": token }
             });
             const data = await response.json();

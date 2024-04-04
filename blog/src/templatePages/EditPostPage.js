@@ -2,7 +2,9 @@ import React from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
-const EditPostPage = ({ match }) => {
+const EditPostPage = (props) => {
+    const { post } = props;
+
     return (
         <div className="container mt-5">
             <div className="row justify-content-center">
@@ -12,12 +14,12 @@ const EditPostPage = ({ match }) => {
                         <div className="card-body">
                             <div className="mb-3">
                                 <label htmlFor="title" className="form-label">Title</label>
-                                <input type="text" className="form-control" id="title" value={"value goes here"} />
+                                <input type="text" className="form-control" id="title" value={post.title} />
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="content" className="form-label">Content</label>
                                 <ReactQuill
-                                    // value={content}
+                                    value={post.content}
                                     // onChange={handleContentChange}
                                     modules={{
                                         toolbar: [

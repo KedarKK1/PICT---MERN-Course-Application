@@ -39,7 +39,7 @@ export const getAPost = async (req, res) => {
 
 export const removeAPost = async (req, res) => {
     try {
-        const id = req.body;
+        const {id} = req.body;
         if (!id) {
             return res.status(400).json({ success: false, message: "id is not given in req.body!" });
         }
@@ -50,7 +50,8 @@ export const removeAPost = async (req, res) => {
                 return res.status(403).json({ success: false, message: "Unauthorized!" });
             }else{
                 const removed = await Post.deleteOne({ _id: post._id });
-                res.status(200).json({ success: true, message: removed });
+                const removedComments = await Comment.delete({ post: post._id });
+                return res.status(200).json({ success: true, message: removed, removedComments });
             }
         }else{
             return res.status(404).json({ success: false, message: "Post Not Found!" });

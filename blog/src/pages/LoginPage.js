@@ -1,30 +1,34 @@
 import React, { useState } from 'react'
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 const LoginPage = () => {
     let navigate = useNavigate();
-    const [credentials, setCredentials] = useState({email: "", password:""});
+    const [credentials, setCredentials] = useState({ email: "", password: "" });
 
-    const handleSubmit = async(e) =>{
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const respose = await fetch(`http://localhost:3001/auth/login`, {
             method: 'POST',
             headers: {
-                'Content-Type' : 'application/json'
+                'Content-Type': 'application/json'
             },
-            body: JSON.stringify({email: credentials.email, password: credentials.password})
+            body: JSON.stringify({ email: credentials.email, password: credentials.password })
         });
         const json = await respose.json();
         localStorage.setItem('token', json.authToken);
         localStorage.setItem('userId', json.userId);
-        navigate('/', {replace:true});
-        
+        if (json.success == true) {
+            navigate('/', { replace: true });
+        } else {
+            alert("Incorrect Credentials! ")
+        }
+
     }
     const onChange = (e) => {
-        setCredentials({...credentials, [e.target.name] : e.target.value});
+        setCredentials({ ...credentials, [e.target.name]: e.target.value });
     }
     return (
-        <div className='container' style={{ width: "clamp(250px, 40%, 600px)", border: "1px solid black", borderRadius: "10px", padding: "20px", marginTop:"50px" }}>
+        <div className='container' style={{ width: "clamp(250px, 40%, 600px)", border: "1px solid black", borderRadius: "10px", padding: "20px", marginTop: "50px" }}>
             <h3>Login</h3>
             <hr />
             <form onSubmit={handleSubmit}>
@@ -37,7 +41,7 @@ const LoginPage = () => {
                     <label htmlFor="password" className="form-label">Password</label>
                     <input type="password" value={credentials.password} onChange={onChange} className="form-control" id="password" name="password" />
                 </div>
-                <button style={{width:"100%"}} type="submit" className="btn btn-primary">Submit</button>
+                <button style={{ width: "100%" }} type="submit" className="btn btn-primary">Submit</button>
             </form>
         </div>
     )
