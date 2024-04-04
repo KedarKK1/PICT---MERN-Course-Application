@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"ABC DEF\",\r\n    \"email\": \"abc@gmail.com\",\r\n    \"password\": \"abc@1234\"\r\n}",
+							"raw": "{\r\n    \"username\": \"Kapil Gujrathi\",\r\n    \"email\": \"kapil@gmail.com\",\r\n    \"password\": \"kapil@1234\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -127,7 +127,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": \"660c055fba3fa848d770ac5b\",\r\n    \"title\": \"welcome to new Wildlife century \",\r\n    \"content\": \"This is kanchenchunga wildlife century\"\r\n}",
+							"raw": "{\r\n    \"id\": \"660c055fba3fa848d770ac5b\",\r\n    \"title\": \"welcome to old Wildlife century \",\r\n    \"content\": \"This is kanchenchunga wildlife century\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -234,6 +234,171 @@
 								"post",
 								"get",
 								"660c055fba3fa848d770ac5b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comment Routes",
+			"item": [
+				{
+					"name": "addComment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjYwYmZhNjljNzBmMDIxNjE4OGZhMzNjIn0sImlhdCI6MTcxMjA2MTU2Nn0.Or7nQUY1kt2S4MnyrRYPRHTOpnhHYojXvnpgL3CzVOA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"postId\": \"660d5530a35becb205782425\",\r\n    \"content\": \"This is comment for mumbai blog\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/comment/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"comment",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editComment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjYwYmZhNjljNzBmMDIxNjE4OGZhMzNjIn0sImlhdCI6MTcxMjA2MTU2Nn0.Or7nQUY1kt2S4MnyrRYPRHTOpnhHYojXvnpgL3CzVOA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"660e91b1f3bc273d573ace4c\",\r\n    \"content\": \"This is newer content for mumbai vlog\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/comment/edit",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"comment",
+								"edit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "removeComment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjYwYmZhNjljNzBmMDIxNjE4OGZhMzNjIn0sImlhdCI6MTcxMjA2MTU2Nn0.Or7nQUY1kt2S4MnyrRYPRHTOpnhHYojXvnpgL3CzVOA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"660e91b1f3bc273d573ace4c\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/comment/remove",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"comment",
+								"remove"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllComment",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjYwYmZhNjljNzBmMDIxNjE4OGZhMzNjIn0sImlhdCI6MTcxMjA2MTU2Nn0.Or7nQUY1kt2S4MnyrRYPRHTOpnhHYojXvnpgL3CzVOA",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3001/comment/getAll",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"comment",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get A Comment",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjYwYmZhNjljNzBmMDIxNjE4OGZhMzNjIn0sImlhdCI6MTcxMjA2MTU2Nn0.Or7nQUY1kt2S4MnyrRYPRHTOpnhHYojXvnpgL3CzVOA",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3001/comment/get/660e9180f3bc273d573ace48",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"comment",
+								"get",
+								"660e9180f3bc273d573ace48"
 							]
 						}
 					},
