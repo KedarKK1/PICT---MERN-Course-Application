@@ -20,6 +20,7 @@ const Navbar = () => {
                         </div>
                         :
                         <div className="d-flex">
+                            <Link className="btn btn-outline-dark mx-2" to="/profile" role="button">Profile</Link>
                             <Link className="btn btn-outline-dark mx-2" to="/add" role="button">Add Post</Link>
                             <button className="btn btn-outline-dark mx-2" onClick={handleLogout}>Logout</button>
                         </div>

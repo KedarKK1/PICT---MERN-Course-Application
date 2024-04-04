@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, Link } from 'react-router-dom'
+import CommentComponent from '../components/Comment';
 
 const PostPage = () => {
     const [loading, setLoading] = useState(true);
@@ -12,6 +13,9 @@ const PostPage = () => {
         "commentCount": 0,
         "__v": 0
     });
+    const [comments, setComments] = useState(
+        null
+    )
     const [areButtonsDisabled, setareButtonsDisabled] = useState(true);
 
     let params = useParams();
@@ -26,6 +30,9 @@ const PostPage = () => {
         });
         const json = await respose.json();
         setPost(json.post);
+        // console.log('json.comments ', json.comments)
+        setComments(json.comments);
+        // console.log('comments ', comments)
         const userId = localStorage.getItem("userId");
         if (userId == json.post.author) {
             setareButtonsDisabled(false);
@@ -55,7 +62,7 @@ const PostPage = () => {
         setLoading(false);
     }
     const handleUpdate = (post) => {
-        navigate(`/edit-post/${post._id}`, { state: {post: post} });
+        navigate(`/edit-post/${post._id}`, { state: { post: post } });
     }
 
 
@@ -90,6 +97,23 @@ const PostPage = () => {
                 <div className="card-body">
                     <p className="card-text" dangerouslySetInnerHTML={{ __html: post.content }}></p>
                 </div>
+            </div>
+            <div className="card-footer bg-light">
+                <div className="flex justify-content-between">
+                    <h4>Comments</h4>
+                    <Link className="btn btn-outline-dark mx-2" to={`/addComment/${params.postId}`} role="button">Add Comment</Link>
+                </div>
+                {comments.length == 0 ? (
+                    <p>No comments yet.</p>
+                ) : (
+                    <ul className="list-group list-group-flush">
+                        {comments.map(comment => (
+                            <li key={comment._id} className="list-group-item">
+                                <CommentComponent comment={comment} isButtonDisabled={localStorage.getItem('userId') != comment.author} />
+                            </li>
+                        ))}
+                    </ul>
+                )}
             </div>
 
         </div>
